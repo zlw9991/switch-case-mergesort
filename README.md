@@ -1,6 +1,8 @@
 # switch_case_mergesort
 Java based mergesort which uses switch case with if else instead of purely if else, see compare.java.
 
+Fixed time comparison, switch-case is shown to provide a slight decrement in time required for large arrays.
+
 IE: (standard mergesort)
 ```
 while (l1c < l1.length && l2c < l2.length) {
