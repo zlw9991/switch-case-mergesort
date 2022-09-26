@@ -1,32 +1,103 @@
 # switch_case_mergesort
-Java based mergesort which uses switch case with if else instead of purely if else.
+Java based mergesort which uses switch case with if else instead of purely if else, see compare.java.
 
 IE: (standard mergesort)
 ```
-if(l1[l1c] < l2[l2c]) {
-					...
-				} else if (l1[l1c] < l2[l2c]){
-				...
-				} else { // where l1[l1c] == l2[l2c]
-					....
+while (l1c < l1.length && l2c < l2.length) {
+			//swc = l1[l1c] - l2[l2c];
+			
+				if(l1[l1c] - l2[l2c] < 0) {
+					mergec++;
+					rtl[rtc] = l1[l1c];
+					l1c++;
+					rtc++;
+				} else if (l1[l1c] - l2[l2c] > 0){
+					mergec++;
+					rtl[rtc] = l2[l2c];
+					l2c++;
+					rtc++;
+				} else {
+					mergec++;
+					rtl[rtc] = l1[l1c];
+					l1c++;
+					rtc++;
+					rtl[rtc] = l2[l2c];
+					l2c++;
+					rtc++;
 				}
+			
+		}
 ```
 
 VS
 
-(switch-case mergesort)
+(partial switch-case mergesort)
 ```
-swc = l1[l1c] - l2[l2c];
-			switch(swc) { // where l1[l1c] == l2[l2c]
+while (l1c < l1.length && l2c < l2.length) {
+			//swc = l1[l1c] - l2[l2c];
+			switch(l1[l1c] - l2[l2c]) {
 			case 0:
-				.....
+				mergec++;
+				rtl[rtc] = l1[l1c];
+				l1c++;
+				rtc++;
+				rtl[rtc] = l2[l2c];
+				l2c++;
+				rtc++;
 				break;
 			default:
-				if(l1[l1c] < l2[l2c]) {
-					....
+				if(l1[l1c] - l2[l2c] < 0) {
+					mergec++;
+					rtl[rtc] = l1[l1c];
+					l1c++;
+					rtc++;
+					//break;
 				} else {
-					....
+					mergec++;
+					rtl[rtc] = l2[l2c];
+					l2c++;
+					rtc++;
 				}
 			}
+		}
 
+```
+VS
+
+(full switch-case mergesort)
+```
+while (l1c < l1.length && l2c < l2.length) {
+						//swc = l1[l1c] - l2[l2c];
+			
+			
+			switch(l1[l1c] - l2[l2c]) {
+			case 0:
+				mergec++;
+				rtl[rtc] = l1[l1c];
+				l1c++;
+				rtc++;
+				rtl[rtc] = l2[l2c];
+				l2c++;
+				rtc++;
+				break;
+			default:
+				//swc = (int) (((swc)|~(swc))>>>1) ^((((swc)|~(swc))>>>1) | swc);
+				//swc = (int) (~(0)>>>1) ^((~(0)>>>1) | l1[l1c] - l2[l2c]);
+				switch((int) (~(0)>>>1) ^((~(0)>>>1) | l1[l1c] - l2[l2c])) {
+				case 0:
+					mergec++;
+					rtl[rtc] = l2[l2c];
+					l2c++;
+					rtc++;
+					
+					break;
+				default:
+					mergec++;
+					rtl[rtc] = l1[l1c];
+					l1c++;
+					rtc++;
+				}
+				
+			}
+		}
 ```
