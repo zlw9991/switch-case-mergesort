@@ -6,7 +6,7 @@ Fixed time comparison, switch-case is shown to provide a slight decrement in tim
 Unique code snippets:
 ```
 // boolean algebra / logic to determine if number is - or +:
-(~(0)>>>1) ^((~(0)>>>1) | <number to compare>)
+~((~(0)>>>1)|<number to compare>)
 // how it works:
 /*
 for most code:
@@ -23,9 +23,9 @@ MSB
 thus when 011...111 ORs with a positive number: it will always be 011...111, unchanged.
 but if 011...111 ORs with a negative number, it will be: 111...111, changed.
 
-thus, when these two values are XOR'd with their old value:
-positive numbers will always produce a 0.
-negative numbers will always produce a non-zero.
+thus, when these two values are put through a NOT operator ('~'):
+positive numbers will always produce a non zero.
+negative numbers will always produce a 0.
 
 */
 ```
