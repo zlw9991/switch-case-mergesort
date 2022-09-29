@@ -114,19 +114,21 @@ while (l1c < l1.length && l2c < l2.length) {
 				break;
 			default:
 				//swc = (int) (((swc)|~(swc))>>>1) ^((((swc)|~(swc))>>>1) | swc);
-				//swc = (int) (~(0)>>>1) ^((~(0)>>>1) | l1[l1c] - l2[l2c]);
-				switch((int) (~(0)>>>1) ^((~(0)>>>1) | l1[l1c] - l2[l2c])) {
+				//swc = (int) (~(0)>>>1) ^((~(0)>>>1) | l1[l1c] - l2[l2c]); ~((~(0)>>>1)|val)
+				//(int) (~(0)>>>1) ^((~(0)>>>1) | l1[l1c] - l2[l2c])
+				switch((int)
+						~((~(0)>>>1)|l1[l1c] - l2[l2c])
+						) {
 				case 0:
-					mergec++;
-					rtl[rtc] = l2[l2c];
-					l2c++;
-					rtc++;
-					
-					break;
-				default:
 					mergec++;
 					rtl[rtc] = l1[l1c];
 					l1c++;
+					rtc++;
+					break;
+				default:
+					mergec++;
+					rtl[rtc] = l2[l2c];
+					l2c++;
 					rtc++;
 				}
 				
