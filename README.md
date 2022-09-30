@@ -1,7 +1,11 @@
 # switch_case_mergesort
 Java based mergesort which uses switch case with if else instead of purely if else, see compare.java.
 
-Fixed time comparison, switch-case is shown to provide a slight decrement in time required for large arrays.
+Edits:
+- Fixed time comparison, added full switch-case.
+- Partial switch case is shown to be the fastest in general for large arrays.
+- Full switch case is occassionally the fastest.
+- Full switch case boolean algebra updated.
 
 Unique code snippets:
 ```
